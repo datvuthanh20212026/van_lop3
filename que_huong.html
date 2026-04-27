@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện viết văn lớp 3 - Tả quê hương em</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fff9e6; display: flex; justify-content: center; padding: 20px; }
+        .container { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1); max-width: 750px; width: 100%; border: 2px solid #edcc61; }
+        h2 { color: #8b4513; text-align: center; border-bottom: 3px double #edcc61; padding-bottom: 15px; margin-top: 0; }
+        .step-label { color: #d4a017; font-weight: bold; font-size: 0.85em; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .question-group { margin-bottom: 20px; position: relative; padding: 15px; background: #fffdf5; border: 1px solid #f3e5ab; border-radius: 12px; }
+        label { display: block; font-weight: 600; margin-bottom: 10px; color: #5d4037; padding-right: 40px; line-height: 1.4; }
+        .hint-icon { position: absolute; right: 15px; top: 15px; cursor: pointer; color: #f39c12; font-size: 1.5em; }
+        .hint-box { display: none; background: #fff9c4; border-left: 5px solid #fbc02d; padding: 12px; margin-top: 10px; font-size: 0.9em; color: #4e342e; border-radius: 5px; animation: fadeIn 0.4s; }
+        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #d7ccc8; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        input[type="text"]:focus { border-color: #8b4513; outline: none; box-shadow: 0 0 5px rgba(139, 69, 19, 0.2); }
+        .btn-generate { background-color: #8b4513; color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; margin: 20px 0; transition: 0.3s; }
+        .btn-generate:hover { background-color: #5d4037; }
+        #result-area { margin-top: 20px; padding: 20px; background: #fff3e0; border-radius: 10px; display: none; border: 1px solid #ffcc80; }
+        .writing-zone { margin-top: 30px; border-top: 2px dashed #d7ccc8; padding-top: 20px; }
+        textarea { width: 100%; height: 200px; padding: 15px; border: 2px solid #8b4513; border-radius: 10px; box-sizing: border-box; font-size: 16px; line-height: 1.6; resize: vertical; margin-top: 10px; background-color: #fafafa; }
+        .btn-finish { background-color: #c0392b; color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; margin-top: 10px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2><i class="fas fa-home"></i> Tập Viết Văn: Tả Quê Ngoại</h2>
+
+    <div class="question-group">
+        <span class="step-label">Bước 1: Giới thiệu quê ngoại</span>
+        <label>1. Quê ngoại của em ở đâu? Em thường về thăm quê khi nào? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(1)"></i></label>
+        <div id="hint-1" class="hint-box">Gợi ý: "Quê ngoại của em ở xã Thụy Sơn, huyện Thái Thụy, tỉnh Thái Bình.", "Mỗi dịp hè về, em lại được bố mẹ cho về thăm quê ngoại."</div>
+        <input type="text" id="q1" placeholder="Ví dụ: Quê ngoại của em nằm ở xã Thụy Sơn thanh bình.">
+    </div>
+
+    <div class="question-group">
+        <span class="step-label">Bước 2: Tả cảnh thiên nhiên</span>
+        <label>2. Cảnh vật ở quê có gì đẹp (cánh đồng, con đường, dòng sông)? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(2)"></i></label>
+        <div id="hint-2" class="hint-box">Gợi ý: "Nơi đây có những cánh đồng lúa thẳng cánh cò bay.", "Con đường làng trải nhựa phẳng lì, hai bên toàn hoa dại rực rỡ."</div>
+        <input type="text" id="q2" placeholder="Ví dụ: Hai bên đường làng là những cánh đồng lúa chín vàng óng ả.">
+    </div>
+
+    <div class="question-group">
+        <span class="step-label">Bước 3: Tả sự thay đổi hoặc điểm đặc biệt</span>
+        <label>3. Quê hương em hiện nay có gì thay đổi hay có gì vui? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(3)"></i></label>
+        <div id="hint-3" class="hint-box">Gợi ý: "Bây giờ quê em đã có nhiều ngôi nhà cao tầng khang trang.", "Buổi chiều, em thường cùng ông bà ra bờ đê hóng mát."</div>
+        <input type="text" id="q3" placeholder="Ví dụ: Những ngôi nhà mới khang trang mọc lên sát nhau trông rất đẹp.">
+    </div>
+
+    <div class="question-group">
+        <span class="step-label">Bước 4: Con người ở quê</span>
+        <label>4. Người dân ở quê ngoại em như thế nào? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(4)"></i></label>
+        <div id="hint-4" class="hint-box">Gợi ý: "Mọi người ở đây ai cũng hiền lành và mến khách.", "Bác hàng xóm lúc nào cũng cười tươi chào đón em về chơi."</div>
+        <input type="text" id="q4" placeholder="Ví dụ: Người dân quê em vô cùng hiền lành, chất phác và mến khách.">
+    </div>
+
+    <div class="question-group">
+        <span class="step-label">Bước 5: Tình cảm của em</span>
+        <label>5. Em yêu quê ngoại như thế nào và em hứa điều gì? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(5)"></i></label>
+        <div id="hint-5" class="hint-box">Gợi ý: "Em rất yêu quê ngoại của mình.", "Em sẽ cố gắng học giỏi để sau này về xây dựng quê hương."</div>
+        <input type="text" id="q5" placeholder="Ví dụ: Em rất yêu quê ngoại và mong sớm đến hè để được về chơi.">
+    </div>
+
+    <button class="btn-generate" onclick="generateEssay()"><i class="fas fa-magic"></i> Tạo bài văn mẫu</button>
+
+    <div id="result-area">
+        <strong style="color: #8b4513;">Bài văn mẫu của em:</strong>
+        <p id="result-text" style="margin-top: 10px; line-height: 1.6; font-style: italic; color: #5d4037;"></p>
+    </div>
+
+    <div class="writing-zone">
+        <h3><i class="fas fa-feather-alt"></i> Em tự viết bài vào đây nhé</h3>
+        <p style="font-size: 0.9em; color: #795548;">Dựa vào các câu trả lời trên, em hãy viết thành đoạn văn hoàn chỉnh (5-7 câu).</p>
+        <textarea id="student-work" placeholder="Quê ngoại của em ở Thụy Sơn, Thái Bình..."></textarea>
+        <button class="btn-finish" onclick="finishTask()"><i class="fas fa-heart"></i> Hoàn thành bài làm</button>
+    </div>
+</div>
+
+<script>
+    function toggleHint(id) {
+        const hint = document.getElementById('hint-' + id);
+        hint.style.display = (hint.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function generateEssay() {
+        let fullText = "";
+        for (let i = 1; i <= 5; i++) {
+            let val = document.getElementById('q' + i).value.trim();
+            if (val !== "") {
+                if (!/[.!?]$/.test(val)) val += ".";
+                fullText += val + " ";
+            }
+        }
+        
+        if (fullText.trim() === "") {
+            alert("Em hãy điền vào các ô trống ở trên trước khi xem bài mẫu nhé!");
+            return;
+        }
+
+        document.getElementById('result-text').innerText = fullText;
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('result-area').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function finishTask() {
+        const content = document.getElementById('student-work').value.trim();
+        if (content.length < 40) {
+            alert("Bài văn còn hơi ngắn, em hãy viết thêm về cảnh đẹp ở Thụy Sơn nhé!");
+        } else {
+            alert("Tuyệt lắm! Bài viết về quê hương của em rất cảm động. Chúc mừng em!");
+        }
+    }
+</script>
+
+</body>
+</html>

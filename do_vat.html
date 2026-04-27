@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Luyện viết Văn Miêu tả</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; display: flex; justify-content: center; padding: 20px; }
+        .container { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); max-width: 750px; width: 100%; }
+        h2 { color: #202124; text-align: center; border-bottom: 2px solid #1a73e8; padding-bottom: 15px; }
+        .step-label { color: #1a73e8; font-weight: bold; font-size: 0.9em; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .question-group { margin-bottom: 25px; position: relative; padding: 15px; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; }
+        label { display: block; font-weight: 600; margin-bottom: 10px; color: #3c4043; padding-right: 40px; line-height: 1.5; }
+        .hint-icon { position: absolute; right: 15px; top: 15px; cursor: pointer; color: #fbbc04; font-size: 1.4em; }
+        .hint-box { display: none; background: #fef7e0; border-left: 4px solid #fbbc04; padding: 12px; margin-top: 10px; font-size: 0.9em; color: #665c00; border-radius: 4px; animation: slideDown 0.3s ease; }
+        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #dadce0; border-radius: 6px; box-sizing: border-box; font-size: 16px; transition: 0.2s; }
+        input[type="text"]:focus { border-color: #1a73e8; outline: none; box-shadow: 0 0 0 2px rgba(26,115,232,0.2); }
+        .btn-generate { background-color: #1a73e8; color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; font-weight: 600; margin: 20px 0; }
+        #result-area { margin-top: 20px; padding: 20px; background: #e8f0fe; border-radius: 8px; display: none; border: 1px solid #d2e3fc; }
+        .writing-zone { margin-top: 40px; border-top: 2px dashed #dadce0; padding-top: 20px; }
+        textarea { width: 100%; height: 200px; padding: 15px; border: 2px solid #1a73e8; border-radius: 8px; box-sizing: border-box; font-size: 16px; line-height: 1.6; resize: vertical; margin-top: 15px; }
+        .btn-finish { background-color: #34a853; color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; font-weight: 600; margin-top: 10px; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2><i class="fas fa-book-open"></i> Gợi ý Viết Văn Miêu Tả</h2>
+
+    <div class="question-group">
+        <span class="step-label">Bước 1: Giới thiệu</span>
+        <label>Câu 1. Đó là đồ vật gì, tên gọi là gì và hoàn cảnh nào bạn có nó? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(1)"></i></label>
+        <div id="hint-1" class="hint-box">Gợi ý: "Đồ vật em yêu thích nhất là...", "Trong dịp sinh nhật, em được tặng một..."</div>
+        <input type="text" id="q1" placeholder="Nhập câu trả lời của bạn...">
+    </div>
+
+    <div class="question-group">
+        <span class="step-label">Bước 2: Hình dáng</span>
+        <label>Câu 2: Đồ vật đó to hay nhỏ? Hình dáng tổng thể (khối tròn, chữ nhật, thanh mảnh)? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(2)"></i></label>
+        <div id="hint-2" class="hint-box">Gợi ý: "Nó có kích thước bằng...", "Nhìn tổng thể, vật có hình dáng..."</div>
+        <input type="text" id="q2" placeholder="Nhập câu trả lời của bạn...">
+    </div>
+
+    <div class="question-group">
+        <span class="step-label">Bước 3: Màu sắc & Chất liệu</span>
+        <label>Câu 3: Màu sắc chủ đạo là gì? Khi chạm vào có cảm giác như thế nào? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(3)"></i></label>
+        <div id="hint-3" class="hint-box">Gợi ý: "Bao phủ bên ngoài là lớp màu...", "Khi sờ vào, em cảm thấy sự nhẵn mịn/cứng cáp của..."</div>
+        <input type="text" id="q3" placeholder="Nhập câu trả lời của bạn...">
+    </div>
+
+    <div class="question-group">
+        <span class="step-label">Bước 4: Chi tiết đặc biệt</span>
+        <label>Câu 4: Có điểm nhấn nào khiến nó khác biệt không (vết xước, hình dán, nút bấm)? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(4)"></i></label>
+        <div id="hint-4" class="hint-box">Gợi ý: "Điểm đặc biệt nhất chính là...", "Phía trên có dán một hình..."</div>
+        <input type="text" id="q4" placeholder="Nhập câu trả lời của bạn...">
+    </div>
+
+    <div class="question-group">
+        <span class="step-label">Bước 5: Công dụng</span>
+        <label>Câu 5: Bạn thường sử dụng nó vào việc gì hàng ngày? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(5)"></i></label>
+        <div id="hint-5" class="hint-box">Gợi ý: "Mỗi ngày, nó giúp ích cho em trong việc...", "Em thường dùng nó để..."</div>
+        <input type="text" id="q5" placeholder="Nhập câu trả lời của bạn...">
+    </div>
+
+    <div class="question-group">
+        <span class="step-label">Bước 6: Ý nghĩa</span>
+        <label>Câu 6: Đồ vật đó quan trọng thế nào hoặc gợi nhớ kỷ niệm gì? <i class="fas fa-lightbulb hint-icon" onclick="toggleHint(6)"></i></label>
+        <div id="hint-6" class="hint-box">Gợi ý: "Em rất trân trọng vì nó là...", "Em sẽ giữ gìn nó cẩn thận để..."</div>
+        <input type="text" id="q6" placeholder="Nhập câu trả lời của bạn...">
+    </div>
+
+    <button class="btn-generate" onclick="generateEssay()"><i class="fas fa-sync-alt"></i> Tổng hợp câu trả lời mẫu</button>
+
+    <div id="result-area">
+        <strong style="color: #1a73e8;">Bài văn mẫu tham khảo:</strong>
+        <p id="result-text" style="margin-top: 10px; line-height: 1.6;"></p>
+    </div>
+
+    <div class="writing-zone">
+        <h3><i class="fas fa-pen-fancy"></i> Bài làm của học sinh</h3>
+        <p style="font-size: 0.9em; color: #5f6368;">Dựa vào các câu trả lời và bài mẫu ở trên, em hãy viết lại một bài văn hoàn chỉnh (5-7 câu) vào ô dưới đây:</p>
+        <textarea id="student-final-work" placeholder="Bắt đầu viết bài văn của em tại đây..."></textarea>
+        <button class="btn-finish" onclick="finishTask()"><i class="fas fa-check"></i> Hoàn thành bài viết</button>
+    </div>
+</div>
+
+<script>
+    function toggleHint(id) {
+        const hint = document.getElementById('hint-' + id);
+        hint.style.display = (hint.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function generateEssay() {
+        let combinedText = "";
+        for (let i = 1; i <= 6; i++) {
+            let val = document.getElementById('q' + i).value.trim();
+            if (val !== "") {
+                if (!/[.!?]$/.test(val)) val += ".";
+                combinedText += val + " ";
+            }
+        }
+        
+        if (combinedText.trim() === "") {
+            alert("Vui lòng nhập ít nhất một câu trả lời để tổng hợp!");
+            return;
+        }
+
+        document.getElementById('result-text').innerText = combinedText;
+        document.getElementById('result-area').style.display = 'block';
+        document.getElementById('result-area').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function finishTask() {
+        const content = document.getElementById('student-final-work').value.trim();
+        if (content.length < 50) {
+            alert("Bài văn hơi ngắn, em hãy cố gắng viết chi tiết hơn nhé!");
+        } else {
+            alert("Tuyệt vời! Em đã hoàn thành bài tập viết văn miêu tả.");
+        }
+    }
+</script>
+
+</body>
+</html>

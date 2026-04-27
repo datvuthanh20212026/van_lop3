@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Góc Học Tập Của Bé</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .sub-title {
+            color: #5d6d7e;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 3px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+
+        .card i {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+
+        .card p {
+            color: #7f8c8d;
+            font-size: 1em;
+            line-height: 1.4;
+        }
+
+        /* Màu sắc riêng cho từng thẻ */
+        .obj-card i { color: #e74c3c; }
+        .place-card i { color: #2ecc71; }
+        .home-card i { color: #f1c40f; }
+
+        .obj-card:hover { border-color: #e74c3c; }
+        .place-card:hover { border-color: #2ecc71; }
+        .home-card:hover { border-color: #f1c40f; }
+
+        .footer {
+            margin-top: 50px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><i class="fas fa-graduation-cap"></i> Góc Tập Viết Văn</h1>
+    <p class="sub-title">Chào mừng em đến với thế giới của những câu chữ! Hãy chọn một chủ đề để bắt đầu nhé.</p>
+
+    <div class="menu-container">
+        <a href="do_vat.html" class="card obj-card">
+            <i class="fas fa-pencil-ruler"></i>
+            <h3>Tả Đồ Vật</h3>
+            <p>Kể về chiếc cặp sách, cây bút hay món đồ chơi em yêu nhất.</p>
+        </a>
+
+        <a href="phong_canh.html" class="card place-card">
+            <i class="fas fa-tree"></i>
+            <h3>Tả Phong Cảnh</h3>
+            <p>Miêu tả công viên, trường học hoặc một cảnh đẹp em đã đi qua.</p>
+        </a>
+
+        <a href="que_huong.html" class="card home-card">
+            <i class="fas fa-sun"></i>
+            <h3>Tả Quê Hương</h3>
+            <p>Ghi lại những vẻ đẹp bình dị nơi quê ngoại Thụy Sơn yêu dấu.</p>
+        </a>
+    </div>
+
+    <div class="footer">
+        Cùng học, cùng chơi, cùng sáng tạo mỗi ngày!
+    </div>
+
+</body>
+</html>
